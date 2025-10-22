@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Marifel Guayare</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .photo-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: var(--gray);
+        }
+        
+        #profilePhoto {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        
+        .header-text h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+        }
+        
+        .header-text .title {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .contact-bar {
+            background: var(--light);
+            padding: 30px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            flex-shrink: 0;
+        }
+        
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .section-title {
+            color: var(--dark);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+        
+        .section-title .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        
+        .item-card {
+            margin-bottom: 20px;
+            padding: 25px;
+            background: var(--light);
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .item-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+        
+        .item-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(37,99,235,0.15);
+        }
+        
+        .item-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .item-card .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .item-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(37,99,235,0.4);
+        }
+        
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .availability-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .availability-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(37,99,235,0.2);
+        }
+        
+        .availability-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .availability-card h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .availability-card p {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .status-yes {
+            color: #10b981;
+            font-weight: 600;
+        }
+        
+        .status-no {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .hobby-tag {
+            background: white;
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .hobby-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1) rotate(-2deg);
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 25px;
+            }
+            
+            .photo-container {
+                margin: 0 auto;
+            }
+            
+            .header-text h1 {
+                font-size: 2em;
+            }
+            
+            .action-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .contact-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .action-buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="photo-container">
+                    <div class="photo-placeholder">👤</div>
+                    <img id="profilePhoto" src="photo.jpg" alt="Marifel Guayare">
+                </div>
+                <div class="header-text">
+                    <h1>MARIFEL GUAYARE</h1>
+                    <p class="title">Niñera | Atención al Cliente</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="downloadPDF()">
+                            📥 Descargar CV (PDF)
+                        </button>
+                        <a href="https://wa.me/5493764XXXXXX" target="_blank" class="btn btn-secondary">
+                            💬 WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="contact-bar">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <strong>Ubicación</strong><br>
+                    San Jorge, entre Sargento Cabral y Balbín<br>
+                    Candelaria, Misiones - CP 3308
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div>
+                    <strong>WhatsApp</strong><br>
+                    <a href="https://wa.me/5493764XXXXXX" target="_blank">Enviar mensaje</a>
+                </div>
+            </div>
+        </div>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">💼</span>
+                    Experiencia Profesional
+                </h2>
+                <div class="item-card">
+                    <span class="badge">Actual</span>
+                    <h3>Niñera y Atención al Cliente</h3>
+                    <p>Cuidado profesional de niños con enfoque en desarrollo, seguridad y bienestar. Experiencia en atención personalizada al cliente, garantizando satisfacción y resolución efectiva de necesidades.</p>
+                </div>
+                <div class="item-card">
+                    <h3>Mantenimiento y Limpieza del Hogar</h3>
+                    <p>Gestión integral de limpieza doméstica con alto estándar de calidad. Experiencia en mantenimiento de espacios, organización y cuidado del entorno hogareño.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🎓</span>
+                    Educación
+                </h2>
+                <div class="item-card">
+                    <h3>Secundario Completo</h3>
+                    <p>Educación secundaria finalizada exitosamente.</p>
+                </div>
+                <div class="item-card">
+                    <span class="badge">En Curso</span>
+                    <h3>Comercio Internacional y Despacho Aduanero</h3>
+                    <p>Formación actualizada en procesos de comercio internacional, logística y procedimientos aduaneros.</p>
+                </div>
+                <div class="item-card">
+                    <h3>Curso de PC</h3>
+                    <p>Capacitación en herramientas informáticas, software de oficina y tecnologías digitales.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">📚</span>
+                    Capacitaciones Adicionales
+                </h2>
+                <div class="item-card">
+                    <h3>Taller de PC</h3>
+                    <p>Formación práctica en computación, manejo de sistemas operativos y aplicaciones.</p>
+                </div>
+                <div class="item-card">
+                    <h3>Orientación en Manejo de Inteligencia Artificial</h3>
+                    <p>Introducción a herramientas de IA, aplicaciones prácticas y nuevas tecnologías.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">⭐</span>
+                    Habilidades Profesionales
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-card">Limpieza Profesional</div>
+                    <div class="skill-card">Cuidado de Niños</div>
+                    <div class="skill-card">Atención al Cliente</div>
+                    <div class="skill-card">Organización</div>
+                    <div class="skill-card">Responsabilidad</div>
+                    <div class="skill-card">Trabajo en Equipo</div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🌍</span>
+                    Idiomas
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-card">🇦🇷 Español - Nativo</div>
+                    <div class="skill-card">🇺🇸 Inglés - Nivel Intermedio</div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🕒</span>
+                    Disponibilidad
+                </h2>
+                <div class="availability-grid">
+                    <div class="availability-card">
+                        <div class="icon">📅</div>
+                        <h4>Horario Disponible</h4>
+                        <p>Lunes a Viernes<br><strong>7:00 AM - 2:00 PM</strong></p>
+                    </div>
+                    <div class="availability-card">
+                        <div class="icon">🚗</div>
+                        <h4>Medio de Transporte</h4>
+                        <p class="status-yes">✓ Sí, cuento con movilidad propia</p>
+                    </div>
+                    <div class="availability-card">
+                        <div class="icon">🏠</div>
+                        <h4>Radicación</h4>
+                        <p class="status-no">✗ No disponible para radicación</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🎨</span>
+                    Intereses Personales
+                </h2>
+                <div class="hobbies-container">
+                    <span class="hobby-tag">🎵 Música</span>
+                    <span class="hobby-tag">💪 Entrenamiento</span>
+                    <span class="hobby-tag">🃏 Juegos de Cartas</span>
+                    <span class="hobby-tag">📺 Series</span>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>© 2025 Marifel Guayare - Curriculum Vitae</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Cargar imagen de perfil si existe
+        const profilePhoto = document.getElementById('profilePhoto');
+        const photoPlaceholder = document.querySelector('.photo-placeholder');
+        
+        profilePhoto.addEventListener('load', function() {
+            photoPlaceholder.style.display = 'none';
+            profilePhoto.style.display = 'block';
+        });
+        
+        profilePhoto.addEventListener('error', function() {
+            profilePhoto.style.display = 'none';
+            photoPlaceholder.style.display = 'flex';
+        });
+        
+        // Función para descargar PDF
+        function downloadPDF() {
+            // Esta función descargará el archivo cv-marifel-guayare.pdf
+            const link = document.createElement('a');
+            link.href = 'cv-marifel-guayare.pdf';
+            link.download = 'CV-Marifel-Guayare.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
